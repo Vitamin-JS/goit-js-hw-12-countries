@@ -13,18 +13,18 @@
   },
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url /goit-js-hw-10-food-service/",
+    "build": "parcel build src/index.html --public-url /goit-js-hw-12-countries/",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vitamin-JS/goit-js-hw-10-food-service.git"
+    "url": "git+https://github.com/Vitamin-JS/goit-js-hw-12-countries.git"
   },
   "author": "Vitaliy Popchenkov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Vitamin-JS/goit-js-hw-10-food-service/issues"
+    "url": "https://github.com/Vitamin-JS/goit-js-hw-12-countries/issues"
   },
-  "homepage": "https://Vitamin-JS.github.io/goit-js-hw-10-food-service"
+  "homepage": "https://Vitamin-JS.github.io/goit-js-hw-12-countries"
 }
