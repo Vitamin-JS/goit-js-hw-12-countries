@@ -2274,7 +2274,7 @@ THE SOFTWARE.
 });
 
 ;
-},{}],"hbs/country-name.hbs":[function(require,module,exports) {
+},{}],"hbs/countries-list.hbs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2889,7 +2889,7 @@ require("./css/styles.css");
 
 var _fetchCountries = _interopRequireDefault(require("./js/fetchCountries.js"));
 
-var _countryName = _interopRequireDefault(require("./hbs/country-name.hbs"));
+var _countriesList = _interopRequireDefault(require("./hbs/countries-list.hbs"));
 
 var _countryCard = _interopRequireDefault(require("./hbs/country-card.hbs"));
 
@@ -2898,7 +2898,68 @@ var _lodash = _interopRequireDefault(require("lodash.debounce"));
 var _core = require("@pnotify/core");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./css/styles.css":"css/styles.css","./js/fetchCountries.js":"js/fetchCountries.js","./hbs/country-name.hbs":"hbs/country-name.hbs","./hbs/country-card.hbs":"hbs/country-card.hbs","lodash.debounce":"../node_modules/lodash.debounce/index.js","@pnotify/core":"../node_modules/@pnotify/core/dist/PNotify.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+//  Проверить info =====================
+var cardContainer = document.querySelector('.js-card-container');
+var inputField = document.querySelector('.input-field');
+inputField.addEventListener('input', (0, _lodash.default)(onSearch, 500));
+
+function onSearch() {
+  cardContainer.innerHTML = "";
+  var countryForSearch = inputField.value;
+  if (countryForSearch === "") return;
+
+  _fetchCountries.default.fetchCountries(countryForSearch).then(isFetchSucces).catch(isFetchError);
+}
+
+;
+
+function renderCardMarkup(template, counrty) {
+  var markup = template(counrty);
+  cardContainer.insertAdjacentHTML('beforeend', markup);
+}
+
+;
+
+function isFetchSucces(value) {
+  if (value.length === 1) {
+    renderCardMarkup(_countryCard.default, value[0]);
+  } //  Убрать []   скобки ============================================
+  else if (value.length > 1 && value.length <= 10) {
+      renderCardMarkup(_countriesList.default, value);
+    } else if (value.length > 10) {
+      ManyMatchesAlarm();
+    } else {
+      isFetchError();
+    }
+
+  ;
+}
+
+;
+
+function ManyMatchesAlarm() {
+  (0, _core.error)({
+    title: 'Too many results were found',
+    text: 'Please enter correct country name',
+    delay: 1500,
+    width: '400px'
+  });
+}
+
+;
+
+function isFetchError() {
+  (0, _core.error)({
+    title: 'You entered invalid country name ',
+    text: 'Please enter correct country name',
+    delay: 1500,
+    width: '400px'
+  });
+}
+
+;
+},{"./css/styles.css":"css/styles.css","./js/fetchCountries.js":"js/fetchCountries.js","./hbs/countries-list.hbs":"hbs/countries-list.hbs","./hbs/country-card.hbs":"hbs/country-card.hbs","lodash.debounce":"../node_modules/lodash.debounce/index.js","@pnotify/core":"../node_modules/@pnotify/core/dist/PNotify.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
