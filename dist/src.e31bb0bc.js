@@ -190,9 +190,21 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/fetchCountries.js":[function(require,module,exports) {
-var BASE_URL = 'https://restcountries.eu/rest/v2/name/{name}'; // export default function fetchCountries(searchQuery) {
-// }
-//  Responce example
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fetchCountries;
+var BASE_URL = 'https://restcountries.eu/rest/v2/name';
+
+function fetchCountries(searchQuery) {
+  return fetch("".concat(BASE_URL, "/").concat(coutry)).then(function (response) {
+    return response.json();
+  });
+}
+
+; //  Responce example
 
 [{
   "name": "Colombia",
@@ -2262,7 +2274,80 @@ THE SOFTWARE.
 });
 
 ;
-},{}],"hbs/country.hbs":[function(require,module,exports) {
+},{}],"hbs/country-name.hbs":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _handlebars = _interopRequireDefault(require("handlebars/dist/handlebars.runtime"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var templateFunction = _handlebars.default.template({
+  "1": function _(container, depth0, helpers, partials, data) {
+    var helper,
+        lookupProperty = container.lookupProperty || function (parent, propertyName) {
+      if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+        return parent[propertyName];
+      }
+
+      return undefined;
+    };
+
+    return "    <li>\r\n        <p>" + container.escapeExpression((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, {
+      "name": "name",
+      "hash": {},
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 11
+        },
+        "end": {
+          "line": 4,
+          "column": 19
+        }
+      }
+    }) : helper)) + "</p>\r\n    </li>\r\n";
+  },
+  "compiler": [8, ">= 4.3.0"],
+  "main": function main(container, depth0, helpers, partials, data) {
+    var stack1,
+        lookupProperty = container.lookupProperty || function (parent, propertyName) {
+      if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+        return parent[propertyName];
+      }
+
+      return undefined;
+    };
+
+    return "<ul class='country-name'>\r\n" + ((stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0, {
+      "name": "each",
+      "hash": {},
+      "fn": container.program(1, data, 0),
+      "inverse": container.noop,
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "line": 6,
+          "column": 13
+        }
+      }
+    })) != null ? stack1 : "") + "</ul>";
+  },
+  "useData": true
+});
+
+var _default = templateFunction;
+exports.default = _default;
+},{"handlebars/dist/handlebars.runtime":"../node_modules/handlebars/dist/handlebars.runtime.js"}],"hbs/country-card.hbs":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2278,7 +2363,30 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 var templateFunction = _handlebars.default.template({
   "1": function _(container, depth0, helpers, partials, data) {
-    return "                <li class=\"tag-list__item\">" + container.escapeExpression(container.lambda(depth0, depth0)) + "</li>\r\n";
+    var helper,
+        lookupProperty = container.lookupProperty || function (parent, propertyName) {
+      if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+        return parent[propertyName];
+      }
+
+      return undefined;
+    };
+
+    return "                    <li>\r\n                        " + container.escapeExpression((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, {
+      "name": "name",
+      "hash": {},
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 24
+        },
+        "end": {
+          "line": 12,
+          "column": 32
+        }
+      }
+    }) : helper)) + "\r\n                    </li>\r\n";
   },
   "compiler": [8, ">= 4.3.0"],
   "main": function main(container, depth0, helpers, partials, data) {
@@ -2296,77 +2404,49 @@ var templateFunction = _handlebars.default.template({
       return undefined;
     };
 
-    return "\r\n\r\n\r\n<li class=\"menu__item\">\r\n    <div class=\"card\">\r\n        <img src=\"" + alias4((helper = (helper = lookupProperty(helpers, "image") || (depth0 != null ? lookupProperty(depth0, "image") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
-      "name": "image",
-      "hash": {},
-      "data": data,
-      "loc": {
-        "start": {
-          "line": 37,
-          "column": 18
-        },
-        "end": {
-          "line": 37,
-          "column": 27
-        }
-      }
-    }) : helper)) + "\" alt=\"" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+    return "<h2 class='country-title'>" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
       "name": "name",
       "hash": {},
       "data": data,
       "loc": {
         "start": {
-          "line": 37,
+          "line": 1,
+          "column": 26
+        },
+        "end": {
+          "line": 1,
           "column": 34
-        },
-        "end": {
-          "line": 37,
-          "column": 42
         }
       }
-    }) : helper)) + "\" class=\"card__image\" />\r\n        <div class=\"card__content\">\r\n            <h2 class=\"card__name\">" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
-      "name": "name",
+    }) : helper)) + "</h2>\r\n\r\n<div class='country-card'>\r\n    <div class='country-info'>\r\n        <ul>\r\n            <li><span>Capital:</span> " + alias4((helper = (helper = lookupProperty(helpers, "capital") || (depth0 != null ? lookupProperty(depth0, "capital") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+      "name": "capital",
       "hash": {},
       "data": data,
       "loc": {
         "start": {
-          "line": 39,
-          "column": 35
+          "line": 6,
+          "column": 38
         },
         "end": {
-          "line": 39,
-          "column": 43
+          "line": 6,
+          "column": 49
         }
       }
-    }) : helper)) + "</h2>\r\n            <p class=\"card__price\">\r\n                <i class=\"material-icons\">\r\n                    monetization_on\r\n                </i>\r\n                " + alias4((helper = (helper = lookupProperty(helpers, "price") || (depth0 != null ? lookupProperty(depth0, "price") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
-      "name": "price",
+    }) : helper)) + "</li>\r\n            <li><span>Population:</span> " + alias4((helper = (helper = lookupProperty(helpers, "population") || (depth0 != null ? lookupProperty(depth0, "population") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+      "name": "population",
       "hash": {},
       "data": data,
       "loc": {
         "start": {
-          "line": 44,
-          "column": 16
+          "line": 7,
+          "column": 41
         },
         "end": {
-          "line": 44,
-          "column": 25
+          "line": 7,
+          "column": 55
         }
       }
-    }) : helper)) + " кредитов\r\n            </p>\r\n\r\n            <p class=\"card__descr\">\r\n                " + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
-      "name": "description",
-      "hash": {},
-      "data": data,
-      "loc": {
-        "start": {
-          "line": 48,
-          "column": 16
-        },
-        "end": {
-          "line": 48,
-          "column": 31
-        }
-      }
-    }) : helper)) + "\r\n            </p>\r\n\r\n            <ul class=\"tag-list\">\r\n" + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "ingredients") : depth0, {
+    }) : helper)) + "</li>\r\n            <li><span>Languages:</span>\r\n                <ul>\r\n" + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "languages") : depth0, {
       "name": "each",
       "hash": {},
       "fn": container.program(1, data, 0),
@@ -2374,37 +2454,43 @@ var templateFunction = _handlebars.default.template({
       "data": data,
       "loc": {
         "start": {
-          "line": 52,
-          "column": 16
+          "line": 10,
+          "column": 20
         },
         "end": {
-          "line": 54,
-          "column": 25
+          "line": 14,
+          "column": 29
         }
       }
-    })) != null ? stack1 : "") + "\r\n            </ul>\r\n        </div>\r\n\r\n        <button class=\"card__button button\">\r\n            <i class=\"material-icons button__icon\">\r\n                shopping_cart\r\n            </i>\r\n            В корзину\r\n        </button>\r\n    </div>\r\n</li>";
-  },
-  "useData": true
-});
-
-var _default = templateFunction;
-exports.default = _default;
-},{"handlebars/dist/handlebars.runtime":"../node_modules/handlebars/dist/handlebars.runtime.js"}],"hbs/countries-list.hbs":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _handlebars = _interopRequireDefault(require("handlebars/dist/handlebars.runtime"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var templateFunction = _handlebars.default.template({
-  "compiler": [8, ">= 4.3.0"],
-  "main": function main(container, depth0, helpers, partials, data) {
-    return "";
+    })) != null ? stack1 : "") + "                </ul>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <img src='" + alias4((helper = (helper = lookupProperty(helpers, "flag") || (depth0 != null ? lookupProperty(depth0, "flag") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+      "name": "flag",
+      "hash": {},
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 14
+        },
+        "end": {
+          "line": 20,
+          "column": 22
+        }
+      }
+    }) : helper)) + "' alt='Flag of " + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+      "name": "name",
+      "hash": {},
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 37
+        },
+        "end": {
+          "line": 20,
+          "column": 45
+        }
+      }
+    }) : helper)) + "' width=\"300\">\r\n</div>";
   },
   "useData": true
 });
@@ -2803,16 +2889,16 @@ require("./css/styles.css");
 
 var _fetchCountries = _interopRequireDefault(require("./js/fetchCountries.js"));
 
-var _country = _interopRequireDefault(require("./hbs/country.hbs"));
+var _countryName = _interopRequireDefault(require("./hbs/country-name.hbs"));
 
-var _countriesList = _interopRequireDefault(require("./hbs/countries-list.hbs"));
+var _countryCard = _interopRequireDefault(require("./hbs/country-card.hbs"));
 
 var _lodash = _interopRequireDefault(require("lodash.debounce"));
 
 var _core = require("@pnotify/core");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./css/styles.css":"css/styles.css","./js/fetchCountries.js":"js/fetchCountries.js","./hbs/country.hbs":"hbs/country.hbs","./hbs/countries-list.hbs":"hbs/countries-list.hbs","lodash.debounce":"../node_modules/lodash.debounce/index.js","@pnotify/core":"../node_modules/@pnotify/core/dist/PNotify.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./css/styles.css":"css/styles.css","./js/fetchCountries.js":"js/fetchCountries.js","./hbs/country-name.hbs":"hbs/country-name.hbs","./hbs/country-card.hbs":"hbs/country-card.hbs","lodash.debounce":"../node_modules/lodash.debounce/index.js","@pnotify/core":"../node_modules/@pnotify/core/dist/PNotify.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
