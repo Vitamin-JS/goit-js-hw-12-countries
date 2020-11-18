@@ -195,70 +195,20 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = fetchCountries;
+exports.default = void 0;
 var BASE_URL = 'https://restcountries.eu/rest/v2/name';
 
-function fetchCountries(searchQuery) {
-  return fetch("".concat(BASE_URL, "/").concat(coutry)).then(function (response) {
+function fetchCountries(country) {
+  return fetch("".concat(BASE_URL, "/").concat(country)).then(function (response) {
     return response.json();
   });
 }
 
-; //  Responce example
-
-[{
-  "name": "Colombia",
-  "topLevelDomain": [".co"],
-  "alpha2Code": "CO",
-  "alpha3Code": "COL",
-  "callingCodes": ["57"],
-  "capital": "Bogotá",
-  "altSpellings": ["CO", "Republic of Colombia", "República de Colombia"],
-  "region": "Americas",
-  "subregion": "South America",
-  "population": 48759958,
-  "latlng": [4.0, -72.0],
-  "demonym": "Colombian",
-  "area": 1141748.0,
-  "gini": 55.9,
-  "timezones": ["UTC-05:00"],
-  "borders": ["BRA", "ECU", "PAN", "PER", "VEN"],
-  "nativeName": "Colombia",
-  "numericCode": "170",
-  "currencies": [{
-    "code": "COP",
-    "name": "Colombian peso",
-    "symbol": "$"
-  }],
-  "languages": [{
-    "iso639_1": "es",
-    "iso639_2": "spa",
-    "name": "Spanish",
-    "nativeName": "Español"
-  }],
-  "translations": {
-    "de": "Kolumbien",
-    "es": "Colombia",
-    "fr": "Colombie",
-    "ja": "コロンビア",
-    "it": "Colombia",
-    "br": "Colômbia",
-    "pt": "Colômbia"
-  },
-  "flag": "https://restcountries.eu/data/col.svg",
-  "regionalBlocs": [{
-    "acronym": "PA",
-    "name": "Pacific Alliance",
-    "otherAcronyms": [],
-    "otherNames": ["Alianza del Pacífico"]
-  }, {
-    "acronym": "USAN",
-    "name": "Union of South American Nations",
-    "otherAcronyms": ["UNASUR", "UNASUL", "UZAN"],
-    "otherNames": ["Unión de Naciones Suramericanas", "União de Nações Sul-Americanas", "Unie van Zuid-Amerikaanse Naties", "South American Union"]
-  }],
-  "cioc": "COL"
-}];
+;
+var _default = {
+  fetchCountries: fetchCountries
+};
+exports.default = _default;
 },{}],"../node_modules/handlebars/dist/handlebars.runtime.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -2362,36 +2312,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var templateFunction = _handlebars.default.template({
-  "1": function _(container, depth0, helpers, partials, data) {
-    var helper,
-        lookupProperty = container.lookupProperty || function (parent, propertyName) {
-      if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-        return parent[propertyName];
-      }
-
-      return undefined;
-    };
-
-    return "                    <li>\r\n                        " + container.escapeExpression((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, {
-      "name": "name",
-      "hash": {},
-      "data": data,
-      "loc": {
-        "start": {
-          "line": 12,
-          "column": 24
-        },
-        "end": {
-          "line": 12,
-          "column": 32
-        }
-      }
-    }) : helper)) + "\r\n                    </li>\r\n";
-  },
   "compiler": [8, ">= 4.3.0"],
   "main": function main(container, depth0, helpers, partials, data) {
-    var stack1,
-        helper,
+    var helper,
         alias1 = depth0 != null ? depth0 : container.nullContext || {},
         alias2 = container.hooks.helperMissing,
         alias3 = "function",
@@ -2446,33 +2369,31 @@ var templateFunction = _handlebars.default.template({
           "column": 55
         }
       }
-    }) : helper)) + "</li>\r\n            <li><span>Languages:</span>\r\n                <ul>\r\n" + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "languages") : depth0, {
-      "name": "each",
+    }) : helper)) + "</li>\r\n            <li><span>Languages:</span> " + alias4((lookupProperty(helpers, "languages:") || depth0 && lookupProperty(depth0, "languages:") || alias2).call(alias1, depth0 != null ? lookupProperty(depth0, "name") : depth0, {
+      "name": "languages:",
       "hash": {},
-      "fn": container.program(1, data, 0),
-      "inverse": container.noop,
       "data": data,
       "loc": {
         "start": {
-          "line": 10,
-          "column": 20
+          "line": 8,
+          "column": 40
         },
         "end": {
-          "line": 14,
-          "column": 29
+          "line": 8,
+          "column": 59
         }
       }
-    })) != null ? stack1 : "") + "                </ul>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <img src='" + alias4((helper = (helper = lookupProperty(helpers, "flag") || (depth0 != null ? lookupProperty(depth0, "flag") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+    })) + "</li>\r\n        </ul>\r\n    </div>\r\n    <img src='" + alias4((helper = (helper = lookupProperty(helpers, "flag") || (depth0 != null ? lookupProperty(depth0, "flag") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
       "name": "flag",
       "hash": {},
       "data": data,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 11,
           "column": 14
         },
         "end": {
-          "line": 20,
+          "line": 11,
           "column": 22
         }
       }
@@ -2482,15 +2403,15 @@ var templateFunction = _handlebars.default.template({
       "data": data,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 11,
           "column": 37
         },
         "end": {
-          "line": 20,
+          "line": 11,
           "column": 45
         }
       }
-    }) : helper)) + "' width=\"300\">\r\n</div>";
+    }) : helper)) + "' width=\"300\">\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n// Responce example\r\n[{\r\n\"name\": \"Colombia\",\r\n\"topLevelDomain\": [\".co\"],\r\n\"alpha2Code\": \"CO\",\r\n\"alpha3Code\": \"COL\",\r\n\"callingCodes\": [\"57\"],\r\n\"capital\": \"Bogotá\",\r\n\"altSpellings\": [\"CO\", \"Republic of Colombia\", \"República de Colombia\"],\r\n\"region\": \"Americas\",\r\n\"subregion\": \"South America\",\r\n\"population\": 48759958,\r\n\"latlng\": [4.0, -72.0],\r\n\"demonym\": \"Colombian\",\r\n\"area\": 1141748.0,\r\n\"gini\": 55.9,\r\n\"timezones\": [\"UTC-05:00\"],\r\n\"borders\": [\"BRA\", \"ECU\", \"PAN\", \"PER\", \"VEN\"],\r\n\"nativeName\": \"Colombia\",\r\n\"numericCode\": \"170\",\r\n\"currencies\": [{\r\n\"code\": \"COP\",\r\n\"name\": \"Colombian peso\",\r\n\"symbol\": \"$\"\r\n}],\r\n\"languages\": [{\r\n\"iso639_1\": \"es\",\r\n\"iso639_2\": \"spa\",\r\n\"name\": \"Spanish\",\r\n\"nativeName\": \"Español\"\r\n}],\r\n\"translations\": {\r\n\"de\": \"Kolumbien\",\r\n\"es\": \"Colombia\",\r\n\"fr\": \"Colombie\",\r\n\"ja\": \"コロンビア\",\r\n\"it\": \"Colombia\",\r\n\"br\": \"Colômbia\",\r\n\"pt\": \"Colômbia\"\r\n},\r\n\"flag\": \"https://restcountries.eu/data/col.svg\",\r\n\"regionalBlocs\": [{\r\n\"acronym\": \"PA\",\r\n\"name\": \"Pacific Alliance\",\r\n\"otherAcronyms\": [],\r\n\"otherNames\": [\"Alianza del Pacífico\"]\r\n}, {\r\n\"acronym\": \"USAN\",\r\n\"name\": \"Union of South American Nations\",\r\n\"otherAcronyms\": [\"UNASUR\", \"UNASUL\", \"UZAN\"],\r\n\"otherNames\": [\"Unión de Naciones Suramericanas\", \"União de Nações Sul-Americanas\", \"Unie van Zuid-Amerikaanse Naties\",\r\n\"South American Union\"]\r\n}],\r\n\"cioc\": \"COL\"\r\n}]";
   },
   "useData": true
 });
@@ -2942,8 +2863,8 @@ function ManyMatchesAlarm() {
   (0, _core.error)({
     title: 'Too many results were found',
     text: 'Please enter correct country name',
-    delay: 1500,
-    width: '400px'
+    delay: 3000,
+    width: '600px'
   });
 }
 
@@ -2953,8 +2874,8 @@ function isFetchError() {
   (0, _core.error)({
     title: 'You entered invalid country name ',
     text: 'Please enter correct country name',
-    delay: 1500,
-    width: '400px'
+    delay: 2000,
+    width: '600px'
   });
 }
 
@@ -2987,7 +2908,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62256" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57357" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

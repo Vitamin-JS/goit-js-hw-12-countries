@@ -35,8 +35,8 @@ function ManyMatchesAlarm() {
     error({
         title: 'Too many results were found',
         text: 'Please enter correct country name',
-        delay: 1500,
-        width: '400px',
+        delay: 3000,
+        width: '600px',
     })
 };
 
@@ -44,7 +44,7 @@ function isFetchError() {
     error({
         title: 'You entered invalid country name ',
         text: 'Please enter correct country name',
-        delay: 1500,
-        width: '400px',
+        delay: 2000,
+        width: '600px',
     })
 };
