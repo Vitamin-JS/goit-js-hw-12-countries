@@ -3,7 +3,9 @@ import fetchCountriesAPI from './js/fetchCountries.js';
 import foundCountriesList from './hbs/countries-list.hbs';
 import countryCardMarkup from './hbs/country-card.hbs';
 import debounce from 'lodash.debounce';
-import { info, error } from '@pnotify/core';  //  Проверить info =====================
+import { info, error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 const cardContainer = document.querySelector('.js-card-container');
 const inputField = document.querySelector('.input-field');
@@ -32,11 +34,11 @@ function isFetchSucces(value) {
 };
 
 function ManyMatchesAlarm() {
-    error({
+    info({
         title: 'Too many results were found',
         text: 'Please enter correct country name',
         delay: 3000,
-        width: '600px',
+        width: '300px',
     })
 };
 
@@ -44,7 +46,7 @@ function isFetchError() {
     error({
         title: 'You entered invalid country name ',
         text: 'Please enter correct country name',
-        delay: 2000,
-        width: '600px',
+        delay: 3000,
+        width: '300px',
     })
 };
