@@ -196,7 +196,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var BASE_URL = 'https://restcountries.eu/rest/v2/name';
+var BASE_URL = 'https://restcountries.eu/rest/v2/name'; //https://restcountries.eu/rest/v2/name
 
 function fetchCountries(country) {
   return fetch("".concat(BASE_URL, "/").concat(country)).then(function (response) {
@@ -207,7 +207,8 @@ function fetchCountries(country) {
 ;
 var _default = {
   fetchCountries: fetchCountries
-};
+}; // console.log(fetchCountries());
+
 exports.default = _default;
 },{}],"../node_modules/handlebars/dist/handlebars.runtime.js":[function(require,module,exports) {
 var define;
@@ -2312,9 +2313,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var templateFunction = _handlebars.default.template({
+  "1": function _(container, depth0, helpers, partials, data) {
+    var helper,
+        lookupProperty = container.lookupProperty || function (parent, propertyName) {
+      if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+        return parent[propertyName];
+      }
+
+      return undefined;
+    };
+
+    return "                    <li>\r\n                        " + container.escapeExpression((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, {
+      "name": "name",
+      "hash": {},
+      "data": data,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 24
+        },
+        "end": {
+          "line": 12,
+          "column": 32
+        }
+      }
+    }) : helper)) + "\r\n                    </li>\r\n";
+  },
   "compiler": [8, ">= 4.3.0"],
   "main": function main(container, depth0, helpers, partials, data) {
-    var helper,
+    var stack1,
+        helper,
         alias1 = depth0 != null ? depth0 : container.nullContext || {},
         alias2 = container.hooks.helperMissing,
         alias3 = "function",
@@ -2369,31 +2397,33 @@ var templateFunction = _handlebars.default.template({
           "column": 55
         }
       }
-    }) : helper)) + "</li>\r\n            <li><span>Languages:</span> " + alias4((lookupProperty(helpers, "languages:") || depth0 && lookupProperty(depth0, "languages:") || alias2).call(alias1, depth0 != null ? lookupProperty(depth0, "name") : depth0, {
-      "name": "languages:",
+    }) : helper)) + "</li>\r\n            <li><span>Languages:</span>\r\n                <ul>\r\n" + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "languages") : depth0, {
+      "name": "each",
       "hash": {},
+      "fn": container.program(1, data, 0),
+      "inverse": container.noop,
       "data": data,
       "loc": {
         "start": {
-          "line": 8,
-          "column": 40
+          "line": 10,
+          "column": 20
         },
         "end": {
-          "line": 8,
-          "column": 59
+          "line": 14,
+          "column": 29
         }
       }
-    })) + "</li>\r\n        </ul>\r\n    </div>\r\n    <img src='" + alias4((helper = (helper = lookupProperty(helpers, "flag") || (depth0 != null ? lookupProperty(depth0, "flag") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
+    })) != null ? stack1 : "") + "                </ul>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <img src='" + alias4((helper = (helper = lookupProperty(helpers, "flag") || (depth0 != null ? lookupProperty(depth0, "flag") : depth0)) != null ? helper : alias2, _typeof(helper) === alias3 ? helper.call(alias1, {
       "name": "flag",
       "hash": {},
       "data": data,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 19,
           "column": 14
         },
         "end": {
-          "line": 11,
+          "line": 19,
           "column": 22
         }
       }
@@ -2403,15 +2433,15 @@ var templateFunction = _handlebars.default.template({
       "data": data,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 19,
           "column": 37
         },
         "end": {
-          "line": 11,
+          "line": 19,
           "column": 45
         }
       }
-    }) : helper)) + "' width=\"300\">\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n// Responce example\r\n[{\r\n\"name\": \"Colombia\",\r\n\"topLevelDomain\": [\".co\"],\r\n\"alpha2Code\": \"CO\",\r\n\"alpha3Code\": \"COL\",\r\n\"callingCodes\": [\"57\"],\r\n\"capital\": \"Bogotá\",\r\n\"altSpellings\": [\"CO\", \"Republic of Colombia\", \"República de Colombia\"],\r\n\"region\": \"Americas\",\r\n\"subregion\": \"South America\",\r\n\"population\": 48759958,\r\n\"latlng\": [4.0, -72.0],\r\n\"demonym\": \"Colombian\",\r\n\"area\": 1141748.0,\r\n\"gini\": 55.9,\r\n\"timezones\": [\"UTC-05:00\"],\r\n\"borders\": [\"BRA\", \"ECU\", \"PAN\", \"PER\", \"VEN\"],\r\n\"nativeName\": \"Colombia\",\r\n\"numericCode\": \"170\",\r\n\"currencies\": [{\r\n\"code\": \"COP\",\r\n\"name\": \"Colombian peso\",\r\n\"symbol\": \"$\"\r\n}],\r\n\"languages\": [{\r\n\"iso639_1\": \"es\",\r\n\"iso639_2\": \"spa\",\r\n\"name\": \"Spanish\",\r\n\"nativeName\": \"Español\"\r\n}],\r\n\"translations\": {\r\n\"de\": \"Kolumbien\",\r\n\"es\": \"Colombia\",\r\n\"fr\": \"Colombie\",\r\n\"ja\": \"コロンビア\",\r\n\"it\": \"Colombia\",\r\n\"br\": \"Colômbia\",\r\n\"pt\": \"Colômbia\"\r\n},\r\n\"flag\": \"https://restcountries.eu/data/col.svg\",\r\n\"regionalBlocs\": [{\r\n\"acronym\": \"PA\",\r\n\"name\": \"Pacific Alliance\",\r\n\"otherAcronyms\": [],\r\n\"otherNames\": [\"Alianza del Pacífico\"]\r\n}, {\r\n\"acronym\": \"USAN\",\r\n\"name\": \"Union of South American Nations\",\r\n\"otherAcronyms\": [\"UNASUR\", \"UNASUL\", \"UZAN\"],\r\n\"otherNames\": [\"Unión de Naciones Suramericanas\", \"União de Nações Sul-Americanas\", \"Unie van Zuid-Amerikaanse Naties\",\r\n\"South American Union\"]\r\n}],\r\n\"cioc\": \"COL\"\r\n}]";
+    }) : helper)) + "' width=\"300\">\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n";
   },
   "useData": true
 });
@@ -2908,7 +2938,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57357" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60301" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
